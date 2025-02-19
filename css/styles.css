@@ -1,0 +1,81 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #2C3E50, #3498DB);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container and content styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    color: #2C3E50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Section styles */
+.main-section {
+    background: #F7F9FC;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Card styles */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Creator section styles */
+.creator {
+    text-align: right;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+}
