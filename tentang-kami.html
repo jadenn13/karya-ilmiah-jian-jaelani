@@ -4,10 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang Kami - DiamondStore</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #2f2f2f, #4a4a4a); color: #fff; line-height: 1.6; }
+        
+        header { background: linear-gradient(135deg, #4682b4, #6a5acd); padding: 15px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 24px; font-weight: bold; display: flex; align-items: center; }
+        .logo span { margin-left: 8px; }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease; }
+        .nav-links a:hover { color: #e6e6fa; }
+        .hamburger { display: none; font-size: 30px; background: none; border: none; color: white; cursor: pointer; }
+        
+        main { max-width: 1200px; margin: 40px auto; padding: 20px; text-align: center; background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+        h1 { font-size: 36px; color: #4682b4; margin-bottom: 20px; }
+        p { font-size: 18px; margin-bottom: 30px; }
+
+        footer { background-color: #1c2526; color: white; padding: 40px 0; }
+        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-logo { font-size: 24px; font-weight: bold; margin-bottom: 20px; }
+        .footer-about p { color: #bbb; }
+        .footer-links h3 { font-size: 18px; margin-bottom: 20px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #bbb; text-decoration: none; }
+        .footer-links a:hover { color: #4682b4; }
+        .copyright { text-align: center; margin-top: 20px; color: #999; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 60px; left: 0; background: linear-gradient(135deg, #4682b4, #6a5acd); padding: 20px; }
+            .nav-links.active { display: flex; }
+            .nav-links li { margin: 10px 0; }
+            h1 { font-size: 28px; }
+            p { font-size: 16px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Tentang Kami</h1>
-    <p>DiamondStore adalah platform top up diamond terpercaya di Indonesia, melayani ribuan gamer sejak 2025.</p>
-    <a href="./index.html">Kembali ke Halaman Utama</a>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#E6E6FA"/>
+                    <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="#E6E6FA" stroke-width="2"/>
+                </svg>
+                <span>DiamondStore</span>
+            </div>
+            <button class="hamburger">☰</button>
+            <ul class="nav-links">
+                <li><a href="./beranda.html">Beranda</a></li>
+                <li><a href="./game.html">Game</a></li>
+                <li><a href="./cara-pembelian.html">Cara Pembelian</a></li>
+                <li><a href="./bantuan.html">Bantuan</a></li>
+                <li><a href="./masuk.html">Masuk</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <h1>Tentang Kami</h1>
+        <p>DiamondStore adalah platform top up diamond terpercaya di Indonesia, melayani ribuan gamer sejak 2025 dengan layanan cepat dan aman.</p>
+        <a href="./index.html" style="color: #e6e6fa; text-decoration: none;">Kembali ke Halaman Utama</a>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">DiamondStore</div>
+                <p>Kami berdedikasi untuk gamer Indonesia.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Tautan Cepat</h3>
+                <ul>
+                    <li><a href="./beranda.html">Beranda</a></li>
+                    <li><a href="./game.html">Game</a></li>
+                    <li><a href="./cara-pembelian.html">Cara Pembelian</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Kontak</h3>
+                <ul>
+                    <li><a href="mailto:support@diamondstore.id">support@diamondstore.id</a></li>
+                    <li><a href="tel:+6281234567890">+62 812-3456-7890</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 DiamondStore. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    </script>
 </body>
 </html>
