@@ -3,119 +3,718 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wawasan Terpadu - Jidan Jaelani</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <title>DiamondStore - Tempat Top Up Game Terpercaya</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6742d9, #8d50e6);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            margin-left: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #ffe100;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #ffe100;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(103, 66, 217, 0.8), rgba(141, 80, 230, 0.8));
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            color: white;
+            animation: fadeIn 1s ease-out;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #ffe100;
+            color: #333;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            background-color: #fff;
+        }
+        
+        /* Games Section */
+        .games-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #333;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, #6742d9, #8d50e6);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+        
+        .game-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .game-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .game-info {
+            padding: 15px;
+        }
+        
+        .game-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .game-publisher {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .game-price {
+            color: #6742d9;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        
+        /* Features Section */
+        .features-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6742d9, #8d50e6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c2c2c;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #6742d9;
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: #6742d9;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #6742d9;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Animation Delays */
+        .game-card, .feature-card {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .game-card:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+        
+        .game-card:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+        
+        .feature-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .feature-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .feature-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px 15px;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .game-image {
+                height: 120px;
+            }
+            
+            .game-title {
+                font-size: 14px;
+            }
+            
+            .game-publisher, .game-price {
+                font-size: 12px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+            
+            .feature-title {
+                font-size: 18px;
+            }
+            
+            .feature-description {
+                font-size: 14px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+            
+            .hero h1 {
+                font-size: 34px;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="content" id="main-content">
-            <h1 class="animate__animated animate__fadeInDown">Wawasan Terpadu untuk Kemajuan Bangsa</h1>
-            
-            <div class="main-section animate__animated animate__fadeIn animate__delay-1s">
-                <h2 class="section-title">Memahami dan Mengatasi Tantangan Sosial</h2>
-                
-                <div class="card" data-aos="fade-up">
-                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Analisis Masalah Sosial Kontemporer</h3>
-                    <p>
-                        Menggunakan pemahaman sejarah untuk menganalisis akar masalah sosial, 
-                        menerapkan konsep sosiologi untuk memahami dinamika masyarakat, 
-                        dan memanfaatkan nilai-nilai Pancasila sebagai panduan penyelesaian.
-                    </p>
-                </div>
-                
-                <div class="card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-icon"><i class="fas fa-comments"></i></div>
-                    <h3>Komunikasi Efektif dalam Masyarakat Majemuk</h3>
-                    <p>
-                        Menggabungkan kemampuan berbahasa Indonesia yang baik dengan 
-                        pemahaman sosiologi untuk berkomunikasi secara efektif dalam 
-                        konteks keberagaman budaya dan sosial Indonesia.
-                    </p>
-                </div>
-                
-                <div class="card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>Pengembangan Solusi Berbasis Kearifan Lokal</h3>
-                    <p>
-                        Mengintegrasikan pembelajaran sejarah dan nilai-nilai PPKn untuk 
-                        mengembangkan solusi yang sesuai dengan konteks budaya dan 
-                        nilai-nilai lokal Indonesia.
-                    </p>
-                </div>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#FFE100"/>
+                    <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="#FFE100" stroke-width="2"/>
+                </svg>
+                <span>DiamondStore</span>
             </div>
-            
-            <div class="benefits" data-aos="zoom-in">
-                <h2>Manfaat Praktis</h2>
-                <ul class="benefits-list">
-                    <li class="benefit-item"><i class="fas fa-check-circle"></i> Meningkatkan kemampuan analisis masalah sosial</li>
-                    <li class="benefit-item"><i class="fas fa-check-circle"></i> Mengembangkan solusi yang kontekstual dan berkelanjutan</li>
-                    <li class="benefit-item"><i class="fas fa-check-circle"></i> Memperkuat kohesi sosial dalam masyarakat</li>
-                    <li class="benefit-item"><i class="fas fa-check-circle"></i> Membangun dialog konstruktif antar kelompok</li>
-                </ul>
-            </div>
+            <ul class="nav-links">
+                <li><a href="./beranda.html">Beranda</a></li>
+                <li><a href="./game.html">Game</a></li>
+                <li><a href="./cara-pembelian.html">Cara Pembelian</a></li>
+                <li><a href="./bantuan.html">Bantuan</a></li>
+                <li><a href="./masuk.html">Masuk</a></li>
+            </ul>
+        </div>
+    </header>
 
-            <div class="advanced-section" data-aos="fade-up">
-                <h2 class="advanced-title">Pemahaman Mendalam</h2>
-                
-                <div class="advanced-content" data-aos="fade-right">
-                    <div class="content-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Integrasi Multidisiplin dalam Analisis Sosial</h3>
-                    <p>
-                        Pendekatan multidisiplin dalam menganalisis fenomena sosial menghadirkan perspektif yang lebih komprehensif dan mendalam. Melalui integrasi berbagai disiplin ilmu, kita dapat memahami bagaimana sejarah membentuk struktur sosial, bagaimana bahasa memengaruhi interaksi masyarakat, dan bagaimana nilai-nilai kewarganegaraan menjadi fondasi dalam pengambilan keputusan sosial.
-                    </p>
-                    <p>
-                        Dalam konteks Indonesia yang memiliki keberagaman budaya dan sosial yang kompleks, pemahaman mendalam tentang interaksi antar berbagai aspek kehidupan masyarakat menjadi kunci dalam mengembangkan solusi yang efektif dan berkelanjutan.
-                    </p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Top Up Diamond Game Favorit Anda</h1>
+            <p>Dapatkan diamond untuk game favorit Anda dengan cepat, aman, dan harga terbaik. Ribuan gamer telah mempercayai kami.</p>
+            <a href="./topup.html" class="cta-button">Mulai Top Up Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games-section">
+        <div class="section-title">
+            <h2>Game Populer</h2>
+        </div>
+        <div class="games-grid">
+            <a href="./mobile-legends.html" class="game-card">
+                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d540e" alt="Mobile Legends" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Mobile Legends</h3>
+                    <p class="game-publisher">Moonton</p>
+                    <p class="game-price">Mulai Rp 15.000</p>
                 </div>
-
-                <div class="advanced-content" data-aos="fade-left">
-                    <div class="content-icon"><i class="fas fa-globe-asia"></i></div>
-                    <h3>Pendekatan Holistik dalam Pembangunan Sosial</h3>
-                    <p>
-                        Pembangunan sosial yang berkelanjutan memerlukan pendekatan holistik yang mempertimbangkan aspek historis, sosiologis, dan nilai-nilai kewarganegaraan. Melalui pemahaman yang mendalam tentang akar sejarah dan dinamika sosial, kita dapat mengembangkan strategi yang lebih efektif dalam mengatasi tantangan contemporer.
-                    </p>
-                    <p>
-                        Nilai-nilai Pancasila sebagai landasan ideologis bangsa memberikan kerangka moral dan etis dalam mengembangkan solusi sosial. Integrasi nilai-nilai ini dengan pemahaman sosiologis dan historical awareness menciptakan pendekatan yang lebih komprehensif dalam pembangunan sosial.
-                    </p>
+            </a>
+            <a href="./free-fire.html" class="game-card">
+                <img src="https://images.unsplash.com/photo-1593305841991-2a41b8e98e27" alt="Free Fire" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Free Fire</h3>
+                    <p class="game-publisher">Garena</p>
+                    <p class="game-price">Mulai Rp 10.000</p>
                 </div>
-
-                <div class="methodology" data-aos="fade-up">
-                    <div class="content-icon"><i class="fas fa-microscope"></i></div>
-                    <h3>Metodologi Penelitian dan Analisis</h3>
-                    <p>
-                        Dalam mengkaji fenomena sosial, diperlukan metodologi yang rigorous dan sistematis. Pendekatan ini melibatkan analisis mendalam terhadap data historis, observasi sosiologis, dan evaluasi implementasi nilai-nilai kewarganegaraan dalam praktik sosial sehari-hari.
-                    </p>
-                    <p>
-                        Penggunaan berbagai metode penelitian, dari analisis dokumen sejarah hingga studi kasus contemporer, memungkinkan pemahaman yang lebih mendalam tentang dinamika sosial dan faktor-faktor yang mempengaruhinya. Hal ini essential dalam mengembangkan solusi yang efektif dan kontekstual.
-                    </p>
+            </a>
+            <a href="./pubg-mobile.html" class="game-card">
+                <img src="https://images.unsplash.com/photo-1595675021513-3e93b89b79c5" alt="PUBG Mobile" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">PUBG Mobile</h3>
+                    <p class="game-publisher">Tencent Games</p>
+                    <p class="game-price">Mulai Rp 20.000</p>
                 </div>
-            </div>
-            
-            <div class="quote" data-aos="flip-up">
-                <i class="fas fa-quote-left"></i>
-                <span>"Memahami masa lalu, menganalisis masa kini, membangun masa depan"</span>
-                <i class="fas fa-quote-right"></i>
-            </div>
+            </a>
+            <a href="./genshin-impact.html" class="game-card">
+                <img src="https://images.unsplash.com/photo-1623930164652-78c0e570a057" alt="Genshin Impact" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Genshin Impact</h3>
+                    <p class="game-publisher">miHoYo</p>
+                    <p class="game-price">Mulai Rp 16.000</p>
+                </div>
+            </a>
+            <a href="./cod-mobile.html" class="game-card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Call of Duty Mobile" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Call of Duty Mobile</h3>
+                    <p class="game-publisher">Activision</p>
+                    <p class="game-price">Mulai Rp 25.000</p>
+                </div>
+            </a>
+            <a href="./valorant.html" class="game-card">
+                <img src="https://images.unsplash.com/photo-1621570079398-7e5d0b5b7d0e" alt="Valorant" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Valorant</h3>
+                    <p class="game-publisher">Riot Games</p>
+                    <p class="game-price">Mulai Rp 50.000</p>
+                </div>
+            </a>
+            <a href="./lol.html" class="game-card">
+                <img src="https://images.unsplash.com/photo-1598033129183-c4f50c6cb13a" alt="League of Legends" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">League of Legends</h3>
+                    <p class="game-publisher">Riot Games</p>
+                    <p class="game-price">Mulai Rp 30.000</p>
+                </div>
+            </a>
+            <a href="./apex-legends.html" class="game-card">
+                <img src="https://images.unsplash.com/photo-1610647752706-3bb779e997fb" alt="Apex Legends" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Apex Legends</h3>
+                    <p class="game-publisher">Electronic Arts</p>
+                    <p class="game-price">Mulai Rp 45.000</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
-            <div class="creator" data-aos="fade-up">
-                <p class="creator-info">Dibuat oleh:</p>
-                <p class="creator-name animate__animated animate__pulse animate__infinite animate__slower">JIDAN JAELANI</p>
-                <a href="mailto:Jidanjaelani13@gmail.com" class="creator-email">
-                    <i class="fas fa-envelope"></i> Jidanjaelani13@gmail.com
-                </a>
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="section-title">
+                <h2>Mengapa Memilih Kami?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Cepat & Instan</h3>
+                    <p class="feature-description">Proses top up diamond yang cepat dan instan. Dapatkan diamond Anda dalam hitungan detik setelah pembayaran berhasil.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99H19C18.47 16.11 15.72 19.78 12 20.93V12H5V6.3L12 3.19V11.99Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Aman & Terpercaya</h3>
+                    <p class="feature-description">Sistem pembayaran yang aman dan terpercaya. Kami telah melayani ribuan gamer di seluruh Indonesia.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.8 10.9C9.53 10.31 8.8 9.7 8.8 8.75C8.8 7.66 9.81 6.9 11.5 6.9C13.28 6.9 13.94 7.75 14 9H16.21C16.14 7.28 15.09 5.7 13 5.19V3H10V5.16C8.06 5.58 6.5 6.84 6.5 8.77C6.5 11.08 8.41 12.23 11.2 12.9C13.7 13.5 14.2 14.38 14.2 15.31C14.2 16 13.71 17.1 11.5 17.1C9.44 17.1 8.63 16.18 8.5 15H6.32C6.47 17.19 8.08 18.42 10 18.83V21H13V18.85C14.95 18.48 16.5 17.35 16.5 15.3C16.5 12.46 14.07 11.49 11.8 10.9Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Harga Terbaik</h3>
+                    <p class="feature-description">Dapatkan harga terbaik untuk setiap pembelian diamond game. Nikmati berbagai promo dan diskon menarik.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="loading-screen">
-        <div class="spinner"></div>
-        <p>Memuat Wawasan Terpadu...</p>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">DiamondStore</div>
+                <p>DiamondStore adalah platform top up diamond game terpercaya di Indonesia. Kami menyediakan layanan top up diamond untuk berbagai game populer dengan proses yang cepat dan aman.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com" class="social-icon" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z" fill="white"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" class="social-icon" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75C18.5 7.44 17.94 8 17.25 8C16.56 8 16 7.44 16 6.75C16 6.06 16.56 5.5 17.25 5.5ZM12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="white"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" class="social-icon" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10V10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16 6 17.26 7.89 17.29C6.43 18.45 4.58 19.13 2.56 19.13C2.22 19.13 1.88 19.11 1.54 19.07C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79C20.33 8.6 20.33 8.42 20.32 8.23C21.16 7.63 21.88 6.87 22.46 6Z" fill="white"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Tautan Cepat</h3>
+                <ul>
+                    <li><a href="./beranda.html">Beranda</a></li>
+                    <li><a href="./game.html">Game</a></li>
+                    <li><a href="./cara-pembelian.html">Cara Pembelian</a></li>
+                    <li><a href="./bantuan.html">Bantuan</a></li>
+                    <li><a href="./tentang-kami.html">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Game Populer</h3>
+                <ul>
+                    <li><a href="./mobile-legends.html">Mobile Legends</a></li>
+                    <li><a href="./free-fire.html">Free Fire</a></li>
+                    <li><a href="./pubg-mobile.html">PUBG Mobile</a></li>
+                    <li><a href="./genshin-impact.html">Genshin Impact</a></li>
+                    <li><a href="./cod-mobile.html">Call of Duty Mobile</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Kontak</h3>
+                <ul>
+                    <li><a href="mailto:support@diamondstore.id">support@diamondstore.id</a></li>
+                    <li><a href="tel:+6281234567890">+62 812-3456-7890</a></li>
+                    <li><a href="./live-chat.html">Live Chat</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 DiamondStore. Semua hak dilindungi.</p>
+        </div>
+    </footer>
 </body>
 </html>
