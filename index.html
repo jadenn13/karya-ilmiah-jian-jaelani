@@ -46,7 +46,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            flex-wrap: wrap;
         }
         
         .logo {
@@ -63,7 +62,6 @@
         .nav-links {
             display: flex;
             list-style: none;
-            flex-wrap: wrap;
         }
         
         .nav-links li {
@@ -96,6 +94,15 @@
         
         .nav-links a:hover::after {
             width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
         }
         
         .hero {
@@ -416,21 +423,32 @@
         }
         
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-                padding: 10px 15px;
+            .hamburger {
+                display: block;
             }
             
             .nav-links {
-                margin-top: 15px;
-                justify-content: center;
+                display: none;
                 flex-direction: column;
                 width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background: linear-gradient(135deg, #6742d9, #8d50e6);
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
             }
             
             .nav-links li {
                 margin: 10px 0;
+            }
+            
+            .header-container {
+                padding: 10px 15px;
             }
             
             .hero {
@@ -519,6 +537,7 @@
                 </svg>
                 <span>DiamondStore</span>
             </div>
+            <button class="hamburger">☰</button>
             <ul class="nav-links">
                 <li><a href="./beranda.html">Beranda</a></li>
                 <li><a href="./game.html">Game</a></li>
@@ -702,5 +721,14 @@
             <p>© 2025 DiamondStore. Semua hak dilindungi.</p>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
